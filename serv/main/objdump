@@ -1,0 +1,475 @@
+    441f:	00 
+			441c: R_X86_64_32S	__stack_chk_guard
+    4420:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+    4424:	75 14                	jne    443a <nfsrpc_readlink+0x28a>
+    4426:	89 d8                	mov    %ebx,%eax
+    4428:	48 81 c4 38 01 00 00 	add    $0x138,%rsp
+    442f:	5b                   	pop    %rbx
+    4430:	41 5c                	pop    %r12
+    4432:	41 5d                	pop    %r13
+    4434:	41 5e                	pop    %r14
+    4436:	41 5f                	pop    %r15
+    4438:	5d                   	pop    %rbp
+    4439:	c3                   	retq   
+    443a:	e8 00 00 00 00       	callq  443f <nfsrpc_readlink+0x28f>
+			443b: R_X86_64_PC32	__stack_chk_fail+0xfffffffffffffffc
+    443f:	90                   	nop    
+
+0000000000004440 <nfsrpc_read>:
+    4440:	55                   	push   %rbp
+    4441:	48 89 e5             	mov    %rsp,%rbp
+    4444:	41 57                	push   %r15
+    4446:	41 56                	push   %r14
+    4448:	41 55                	push   %r13
+    444a:	41 54                	push   %r12
+    444c:	53                   	push   %rbx
+    444d:	48 81 ec a8 01 00 00 	sub    $0x1a8,%rsp
+    4454:	4c 89 8d a8 fe ff ff 	mov    %r9,-0x158(%rbp)
+    445b:	4c 89 85 68 fe ff ff 	mov    %r8,-0x198(%rbp)
+    4462:	48 89 8d 88 fe ff ff 	mov    %rcx,-0x178(%rbp)
+    4469:	48 89 95 c0 fe ff ff 	mov    %rdx,-0x140(%rbp)
+    4470:	49 89 ff             	mov    %rdi,%r15
+    4473:	4c 89 bd a0 fe ff ff 	mov    %r15,-0x160(%rbp)
+    447a:	48 8b 04 25 00 00 00 	mov    0x0,%rax
+    4481:	00 
+			447e: R_X86_64_32S	__stack_chk_guard
+    4482:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    4486:	49 8b 47 10          	mov    0x10(%r15),%rax
+    448a:	49 8b 4f 18          	mov    0x18(%r15),%rcx
+    448e:	4c 8b b1 98 02 00 00 	mov    0x298(%rcx),%r14
+    4495:	4c 89 b5 98 fe ff ff 	mov    %r14,-0x168(%rbp)
+    449c:	49 8b 8e f8 01 00 00 	mov    0x1f8(%r14),%rcx
+    44a3:	c7 85 94 fe ff ff 00 	movl   $0x0,-0x16c(%rbp)
+    44aa:	00 00 00 
+    44ad:	48 85 c9             	test   %rcx,%rcx
+    44b0:	74 0c                	je     44be <nfsrpc_read+0x7e>
+    44b2:	8b 89 60 10 00 00    	mov    0x1060(%rcx),%ecx
+    44b8:	89 8d 94 fe ff ff    	mov    %ecx,-0x16c(%rbp)
+    44be:	31 db                	xor    %ebx,%ebx
+    44c0:	41 f6 46 22 80       	testb  $0x80,0x22(%r14)
+    44c5:	74 26                	je     44ed <nfsrpc_read+0xad>
+    44c7:	48 89 b5 b0 fe ff ff 	mov    %rsi,-0x150(%rbp)
+    44ce:	4c 8b a0 98 01 00 00 	mov    0x198(%rax),%r12
+    44d5:	48 8b bd c0 fe ff ff 	mov    -0x140(%rbp),%rdi
+    44dc:	e8 00 00 00 00       	callq  44e1 <nfsrpc_read+0xa1>
+			44dd: R_X86_64_PC32	crdup+0xfffffffffffffffc
+    44e1:	48 89 85 c0 fe ff ff 	mov    %rax,-0x140(%rbp)
+    44e8:	4c 89 e0             	mov    %r12,%rax
+    44eb:	eb 09                	jmp    44f6 <nfsrpc_read+0xb6>
+    44ed:	48 89 b5 b0 fe ff ff 	mov    %rsi,-0x150(%rbp)
+    44f4:	31 c0                	xor    %eax,%eax
+    44f6:	48 89 85 78 fe ff ff 	mov    %rax,-0x188(%rbp)
+    44fd:	48 8d 40 02          	lea    0x2(%rax),%rax
+    4501:	48 89 85 70 fe ff ff 	mov    %rax,-0x190(%rbp)
+    4508:	c7 85 84 fe ff ff 00 	movl   $0x0,-0x17c(%rbp)
+    450f:	00 00 00 
+    4512:	e9 c9 00 00 00       	jmpq   45e0 <nfsrpc_read+0x1a0>
+    4517:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    451e:	00 00 
+    4520:	83 bd 84 fe ff ff 00 	cmpl   $0x0,-0x17c(%rbp)
+    4527:	0f 85 1c 06 00 00    	jne    4b49 <nfsrpc_read+0x709>
+    452d:	83 bd 94 fe ff ff 00 	cmpl   $0x0,-0x16c(%rbp)
+    4534:	0f 84 0f 06 00 00    	je     4b49 <nfsrpc_read+0x709>
+    453a:	83 fb 04             	cmp    $0x4,%ebx
+    453d:	0f 8c 9d 00 00 00    	jl     45e0 <nfsrpc_read+0x1a0>
+    4543:	e9 01 06 00 00       	jmpq   4b49 <nfsrpc_read+0x709>
+    4548:	83 bd 94 fe ff ff 00 	cmpl   $0x0,-0x16c(%rbp)
+    454f:	4c 8b ad b8 fe ff ff 	mov    -0x148(%rbp),%r13
+    4556:	0f 84 7a 05 00 00    	je     4ad6 <nfsrpc_read+0x696>
+    455c:	49 8b be f8 01 00 00 	mov    0x1f8(%r14),%rdi
+    4563:	8b b5 94 fe ff ff    	mov    -0x16c(%rbp),%esi
+    4569:	48 8b 95 88 fe ff ff 	mov    -0x178(%rbp),%rdx
+    4570:	e8 00 00 00 00       	callq  4575 <nfsrpc_read+0x135>
+			4571: R_X86_64_PC32	nfscl_hasexpired+0xfffffffffffffffc
+    4575:	89 85 84 fe ff ff    	mov    %eax,-0x17c(%rbp)
+    457b:	e9 56 05 00 00       	jmpq   4ad6 <nfsrpc_read+0x696>
+    4580:	83 fb 14             	cmp    $0x14,%ebx
+    4583:	7c 5b                	jl     45e0 <nfsrpc_read+0x1a0>
+    4585:	e9 a0 05 00 00       	jmpq   4b2a <nfsrpc_read+0x6ea>
+    458a:	85 c0                	test   %eax,%eax
+    458c:	44 0f 45 e0          	cmovne %eax,%r12d
+    4590:	48 8b bd e0 fe ff ff 	mov    -0x120(%rbp),%rdi
+    4597:	48 85 ff             	test   %rdi,%rdi
+    459a:	74 05                	je     45a1 <nfsrpc_read+0x161>
+    459c:	e8 00 00 00 00       	callq  45a1 <nfsrpc_read+0x161>
+			459d: R_X86_64_PC32	m_freem+0xfffffffffffffffc
+    45a1:	41 81 fc 27 27 00 00 	cmp    $0x2727,%r12d
+    45a8:	74 09                	je     45b3 <nfsrpc_read+0x173>
+    45aa:	41 81 fc 44 27 00 00 	cmp    $0x2744,%r12d
+    45b1:	75 18                	jne    45cb <nfsrpc_read+0x18b>
+    45b3:	4c 8b b5 98 fe ff ff 	mov    -0x168(%rbp),%r14
+    45ba:	49 8b be f8 01 00 00 	mov    0x1f8(%r14),%rdi
+    45c1:	e8 00 00 00 00       	callq  45c6 <nfsrpc_read+0x186>
+			45c2: R_X86_64_PC32	nfscl_initiate_recovery+0xfffffffffffffffc
+    45c6:	e9 6f 04 00 00       	jmpq   4a3a <nfsrpc_read+0x5fa>
+    45cb:	4c 8b b5 98 fe ff ff 	mov    -0x168(%rbp),%r14
+    45d2:	e9 63 04 00 00       	jmpq   4a3a <nfsrpc_read+0x5fa>
+    45d7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    45de:	00 00 
+    45e0:	48 89 9d b8 fe ff ff 	mov    %rbx,-0x148(%rbp)
+    45e7:	48 c7 85 c8 fe ff ff 	movq   $0x0,-0x138(%rbp)
+    45ee:	00 00 00 00 
+    45f2:	41 f6 46 22 80       	testb  $0x80,0x22(%r14)
+    45f7:	74 4b                	je     4644 <nfsrpc_read+0x204>
+    45f9:	48 8b 85 78 fe ff ff 	mov    -0x188(%rbp),%rax
+    4600:	0f b7 10             	movzwl (%rax),%edx
+    4603:	48 8d 85 c8 fe ff ff 	lea    -0x138(%rbp),%rax
+    460a:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+    460f:	48 8d 85 d0 fe ff ff 	lea    -0x130(%rbp),%rax
+    4616:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+    461b:	48 8b 85 88 fe ff ff 	mov    -0x178(%rbp),%rax
+    4622:	48 89 04 24          	mov    %rax,(%rsp)
+    4626:	b9 01 00 00 00       	mov    $0x1,%ecx
+    462b:	45 31 c0             	xor    %r8d,%r8d
+    462e:	4c 89 ff             	mov    %r15,%rdi
+    4631:	48 8b b5 70 fe ff ff 	mov    -0x190(%rbp),%rsi
+    4638:	4c 8b 8d c0 fe ff ff 	mov    -0x140(%rbp),%r9
+    463f:	e8 00 00 00 00       	callq  4644 <nfsrpc_read+0x204>
+			4640: R_X86_64_PC32	nfscl_getstateid+0xfffffffffffffffc
+    4644:	49 8b 47 18          	mov    0x18(%r15),%rax
+    4648:	4c 8b a0 98 02 00 00 	mov    0x298(%rax),%r12
+    464f:	48 8b 85 a8 fe ff ff 	mov    -0x158(%rbp),%rax
+    4656:	c7 00 00 00 00 00    	movl   $0x0,(%rax)
+    465c:	4c 8b bd b0 fe ff ff 	mov    -0x150(%rbp),%r15
+    4663:	4d 8b 6f 18          	mov    0x18(%r15),%r13
+    4667:	49 63 dd             	movslq %r13d,%rbx
+    466a:	49 03 5f 10          	add    0x10(%r15),%rbx
+    466e:	4d 8d 74 24 18       	lea    0x18(%r12),%r14
+    4673:	31 f6                	xor    %esi,%esi
+    4675:	48 c7 c2 00 00 00 00 	mov    $0x0,%rdx
+			4678: R_X86_64_32S	.rodata.str1.1
+    467c:	b9 7e 05 00 00       	mov    $0x57e,%ecx
+    4681:	4c 89 f7             	mov    %r14,%rdi
+    4684:	e8 00 00 00 00       	callq  4689 <nfsrpc_read+0x249>
+			4685: R_X86_64_PC32	__mtx_lock_flags+0xfffffffffffffffc
+    4689:	49 3b 9c 24 d0 01 00 	cmp    0x1d0(%r12),%rbx
+    4690:	00 
+    4691:	77 06                	ja     4699 <nfsrpc_read+0x259>
+    4693:	49 3b 5f 10          	cmp    0x10(%r15),%rbx
+    4697:	7d 37                	jge    46d0 <nfsrpc_read+0x290>
+    4699:	31 f6                	xor    %esi,%esi
+    469b:	48 c7 c2 00 00 00 00 	mov    $0x0,%rdx
+			469e: R_X86_64_32S	.rodata.str1.1
+    46a2:	b9 80 05 00 00       	mov    $0x580,%ecx
+    46a7:	4c 89 f7             	mov    %r14,%rdi
+    46aa:	e8 00 00 00 00       	callq  46af <nfsrpc_read+0x26f>
+			46ab: R_X86_64_PC32	__mtx_unlock_flags+0xfffffffffffffffc
+    46af:	41 bc 1b 00 00 00    	mov    $0x1b,%r12d
+    46b5:	4c 8b b5 98 fe ff ff 	mov    -0x168(%rbp),%r14
+    46bc:	e9 79 03 00 00       	jmpq   4a3a <nfsrpc_read+0x5fa>
+    46c1:	66 66 66 66 66 66 2e 	nopw   %cs:0x0(%rax,%rax,1)
+    46c8:	0f 1f 84 00 00 00 00 
+    46cf:	00 
+    46d0:	41 8b 9c 24 8c 01 00 	mov    0x18c(%r12),%ebx
+    46d7:	00 
+    46d8:	89 9d 5c fe ff ff    	mov    %ebx,-0x1a4(%rbp)
+    46de:	31 f6                	xor    %esi,%esi
+    46e0:	48 c7 c2 00 00 00 00 	mov    $0x0,%rdx
+			46e3: R_X86_64_32S	.rodata.str1.1
+    46e7:	b9 84 05 00 00       	mov    $0x584,%ecx
+    46ec:	4c 89 f7             	mov    %r14,%rdi
+    46ef:	e8 00 00 00 00       	callq  46f4 <nfsrpc_read+0x2b4>
+			46f0: R_X86_64_PC32	__mtx_unlock_flags+0xfffffffffffffffc
+    46f4:	48 c7 85 e0 fe ff ff 	movq   $0x0,-0x120(%rbp)
+    46fb:	00 00 00 00 
+    46ff:	4d 89 ec             	mov    %r13,%r12
+    4702:	45 85 e4             	test   %r12d,%r12d
+    4705:	41 be 00 00 00 00    	mov    $0x0,%r14d
+    470b:	eb 13                	jmp    4720 <nfsrpc_read+0x2e0>
+    470d:	45 85 e4             	test   %r12d,%r12d
+    4710:	45 89 fe             	mov    %r15d,%r14d
+    4713:	66 66 66 66 2e 0f 1f 	nopw   %cs:0x0(%rax,%rax,1)
+    471a:	84 00 00 00 00 00 
+    4720:	4c 8b bd a0 fe ff ff 	mov    -0x160(%rbp),%r15
+    4727:	0f 8e 03 03 00 00    	jle    4a30 <nfsrpc_read+0x5f0>
+    472d:	48 8b 85 a8 fe ff ff 	mov    -0x158(%rbp),%rax
+    4734:	c7 00 00 00 00 00    	movl   $0x0,(%rax)
+    473a:	41 39 dc             	cmp    %ebx,%r12d
+    473d:	45 89 e5             	mov    %r12d,%r13d
+    4740:	44 0f 4f eb          	cmovg  %ebx,%r13d
+    4744:	49 8b 47 10          	mov    0x10(%r15),%rax
+    4748:	49 8b 4f 18          	mov    0x18(%r15),%rcx
+    474c:	48 8b 91 98 02 00 00 	mov    0x298(%rcx),%rdx
+    4753:	48 8b 88 98 01 00 00 	mov    0x198(%rax),%rcx
+    475a:	44 0f b7 01          	movzwl (%rcx),%r8d
+    475e:	48 83 c1 02          	add    $0x2,%rcx
+    4762:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+    4769:	00 
+    476a:	be 06 00 00 00       	mov    $0x6,%esi
+    476f:	45 31 c9             	xor    %r9d,%r9d
+    4772:	48 8d 9d e0 fe ff ff 	lea    -0x120(%rbp),%rbx
+    4779:	48 89 df             	mov    %rbx,%rdi
+    477c:	e8 00 00 00 00       	callq  4781 <nfsrpc_read+0x341>
+			477d: R_X86_64_PC32	nfscl_reqstart+0xfffffffffffffffc
+    4781:	f6 85 24 ff ff ff 10 	testb  $0x10,-0xdc(%rbp)
+    4788:	74 14                	je     479e <nfsrpc_read+0x35e>
+    478a:	ba 02 00 00 00       	mov    $0x2,%edx
+    478f:	48 89 df             	mov    %rbx,%rdi
+    4792:	48 8d b5 d0 fe ff ff 	lea    -0x130(%rbp),%rsi
+    4799:	e8 00 00 00 00       	callq  479e <nfsrpc_read+0x35e>
+			479a: R_X86_64_PC32	nfsm_stateidtom+0xfffffffffffffffc
+    479e:	be 0c 00 00 00       	mov    $0xc,%esi
+    47a3:	48 89 df             	mov    %rbx,%rdi
+    47a6:	e8 e5 bb ff ff       	callq  390 <nfsm_build>
+    47ab:	f6 85 24 ff ff ff 04 	testb  $0x4,-0xdc(%rbp)
+    47b2:	48 8b 95 b0 fe ff ff 	mov    -0x150(%rbp),%rdx
+    47b9:	48 8b 4a 10          	mov    0x10(%rdx),%rcx
+    47bd:	75 21                	jne    47e0 <nfsrpc_read+0x3a0>
+    47bf:	4c 89 a5 60 fe ff ff 	mov    %r12,-0x1a0(%rbp)
+    47c6:	48 c1 e9 20          	shr    $0x20,%rcx
+    47ca:	0f c9                	bswap  %ecx
+    47cc:	89 08                	mov    %ecx,(%rax)
+    47ce:	8b 4a 10             	mov    0x10(%rdx),%ecx
+    47d1:	0f c9                	bswap  %ecx
+    47d3:	89 48 04             	mov    %ecx,0x4(%rax)
+    47d6:	44 89 e9             	mov    %r13d,%ecx
+    47d9:	0f c9                	bswap  %ecx
+    47db:	89 48 08             	mov    %ecx,0x8(%rax)
+    47de:	eb 1a                	jmp    47fa <nfsrpc_read+0x3ba>
+    47e0:	4c 89 a5 60 fe ff ff 	mov    %r12,-0x1a0(%rbp)
+    47e7:	0f c9                	bswap  %ecx
+    47e9:	89 08                	mov    %ecx,(%rax)
+    47eb:	44 89 e9             	mov    %r13d,%ecx
+    47ee:	0f c9                	bswap  %ecx
+    47f0:	89 48 04             	mov    %ecx,0x4(%rax)
+    47f3:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%rax)
+    47fa:	48 89 df             	mov    %rbx,%rdi
+    47fd:	4c 89 fe             	mov    %r15,%rsi
+    4800:	48 8b 95 88 fe ff ff 	mov    -0x178(%rbp),%rdx
+    4807:	48 8b 8d c0 fe ff ff 	mov    -0x140(%rbp),%rcx
+    480e:	4c 8b 45 10          	mov    0x10(%rbp),%r8
+    4812:	e8 00 00 00 00       	callq  4817 <nfsrpc_read+0x3d7>
+			4813: R_X86_64_PC32	nfscl_request+0xfffffffffffffffc
+    4817:	41 89 c4             	mov    %eax,%r12d
+    481a:	45 85 e4             	test   %r12d,%r12d
+    481d:	0f 85 7e fd ff ff    	jne    45a1 <nfsrpc_read+0x161>
+    4823:	8b 8d 24 ff ff ff    	mov    -0xdc(%rbp),%ecx
+    4829:	f6 c1 08             	test   $0x8,%cl
+    482c:	75 42                	jne    4870 <nfsrpc_read+0x430>
+    482e:	31 c0                	xor    %eax,%eax
+    4830:	83 bd 28 ff ff ff 00 	cmpl   $0x0,-0xd8(%rbp)
+    4837:	75 51                	jne    488a <nfsrpc_read+0x44a>
+    4839:	83 e1 04             	and    $0x4,%ecx
+    483c:	74 4c                	je     488a <nfsrpc_read+0x44a>
+    483e:	48 89 df             	mov    %rbx,%rdi
+    4841:	48 8b b5 68 fe ff ff 	mov    -0x198(%rbp),%rsi
+    4848:	e8 00 00 00 00       	callq  484d <nfsrpc_read+0x40d>
+			4849: R_X86_64_PC32	nfsm_loadattr+0xfffffffffffffffc
+    484d:	85 c0                	test   %eax,%eax
+    484f:	75 39                	jne    488a <nfsrpc_read+0x44a>
+    4851:	48 8b 85 a8 fe ff ff 	mov    -0x158(%rbp),%rax
+    4858:	c7 00 01 00 00 00    	movl   $0x1,(%rax)
+    485e:	31 c0                	xor    %eax,%eax
+    4860:	eb 28                	jmp    488a <nfsrpc_read+0x44a>
+    4862:	66 66 66 66 66 2e 0f 	nopw   %cs:0x0(%rax,%rax,1)
+    4869:	1f 84 00 00 00 00 00 
+    4870:	48 89 df             	mov    %rbx,%rdi
+    4873:	48 8b b5 68 fe ff ff 	mov    -0x198(%rbp),%rsi
+    487a:	48 8b 95 a8 fe ff ff 	mov    -0x158(%rbp),%rdx
+    4881:	48 8b 4d 10          	mov    0x10(%rbp),%rcx
+    4885:	e8 00 00 00 00       	callq  488a <nfsrpc_read+0x44a>
+			4886: R_X86_64_PC32	nfscl_postop_attr+0xfffffffffffffffc
+    488a:	44 8b a5 28 ff ff ff 	mov    -0xd8(%rbp),%r12d
+    4891:	44 89 e1             	mov    %r12d,%ecx
+    4894:	09 c1                	or     %eax,%ecx
+    4896:	0f 85 ee fc ff ff    	jne    458a <nfsrpc_read+0x14a>
+    489c:	8b 85 24 ff ff ff    	mov    -0xdc(%rbp),%eax
+    48a2:	a8 08                	test   $0x8,%al
+    48a4:	75 37                	jne    48dd <nfsrpc_read+0x49d>
+    48a6:	a8 10                	test   $0x10,%al
+    48a8:	0f 84 a5 00 00 00    	je     4953 <nfsrpc_read+0x513>
+    48ae:	48 8b 8d e8 fe ff ff 	mov    -0x118(%rbp),%rcx
+    48b5:	48 8b 85 10 ff ff ff 	mov    -0xf0(%rbp),%rax
+    48bc:	8b 51 10             	mov    0x10(%rcx),%edx
+    48bf:	03 51 18             	add    0x18(%rcx),%edx
+    48c2:	29 c2                	sub    %eax,%edx
+    48c4:	83 fa 04             	cmp    $0x4,%edx
+    48c7:	7d 63                	jge    492c <nfsrpc_read+0x4ec>
+    48c9:	be 04 00 00 00       	mov    $0x4,%esi
+    48ce:	ba 02 00 00 00       	mov    $0x2,%edx
+    48d3:	48 89 df             	mov    %rbx,%rdi
+    48d6:	e8 00 00 00 00       	callq  48db <nfsrpc_read+0x49b>
+			48d7: R_X86_64_PC32	nfsm_dissct+0xfffffffffffffffc
+    48db:	eb 5a                	jmp    4937 <nfsrpc_read+0x4f7>
+    48dd:	48 8b 8d e8 fe ff ff 	mov    -0x118(%rbp),%rcx
+    48e4:	48 8b 85 10 ff ff ff 	mov    -0xf0(%rbp),%rax
+    48eb:	8b 51 10             	mov    0x10(%rcx),%edx
+    48ee:	03 51 18             	add    0x18(%rcx),%edx
+    48f1:	29 c2                	sub    %eax,%edx
+    48f3:	83 fa 08             	cmp    $0x8,%edx
+    48f6:	7d 14                	jge    490c <nfsrpc_read+0x4cc>
+    48f8:	be 08 00 00 00       	mov    $0x8,%esi
+    48fd:	ba 02 00 00 00       	mov    $0x2,%edx
+    4902:	48 89 df             	mov    %rbx,%rdi
+    4905:	e8 00 00 00 00       	callq  490a <nfsrpc_read+0x4ca>
+			4906: R_X86_64_PC32	nfsm_dissct+0xfffffffffffffffc
+    490a:	eb 0b                	jmp    4917 <nfsrpc_read+0x4d7>
+    490c:	48 8d 48 08          	lea    0x8(%rax),%rcx
+    4910:	48 89 8d 10 ff ff ff 	mov    %rcx,-0xf0(%rbp)
+    4917:	41 bc 48 00 00 00    	mov    $0x48,%r12d
+    491d:	48 85 c0             	test   %rax,%rax
+    4920:	0f 84 6a fc ff ff    	je     4590 <nfsrpc_read+0x150>
+    4926:	44 8b 70 04          	mov    0x4(%rax),%r14d
+    492a:	eb 1d                	jmp    4949 <nfsrpc_read+0x509>
+    492c:	48 8d 48 04          	lea    0x4(%rax),%rcx
+    4930:	48 89 8d 10 ff ff ff 	mov    %rcx,-0xf0(%rbp)
+    4937:	41 bc 48 00 00 00    	mov    $0x48,%r12d
+    493d:	48 85 c0             	test   %rax,%rax
+    4940:	0f 84 4a fc ff ff    	je     4590 <nfsrpc_read+0x150>
+    4946:	44 8b 30             	mov    (%rax),%r14d
+    4949:	41 0f ce             	bswap  %r14d
+    494c:	48 8d 9d e0 fe ff ff 	lea    -0x120(%rbp),%rbx
+    4953:	48 8b 8d e8 fe ff ff 	mov    -0x118(%rbp),%rcx
+    495a:	48 8b 85 10 ff ff ff 	mov    -0xf0(%rbp),%rax
+    4961:	8b 51 10             	mov    0x10(%rcx),%edx
+    4964:	03 51 18             	add    0x18(%rcx),%edx
+    4967:	29 c2                	sub    %eax,%edx
+    4969:	83 fa 04             	cmp    $0x4,%edx
+    496c:	7d 14                	jge    4982 <nfsrpc_read+0x542>
+    496e:	be 04 00 00 00       	mov    $0x4,%esi
+    4973:	ba 02 00 00 00       	mov    $0x2,%edx
+    4978:	48 89 df             	mov    %rbx,%rdi
+    497b:	e8 00 00 00 00       	callq  4980 <nfsrpc_read+0x540>
+			497c: R_X86_64_PC32	nfsm_dissct+0xfffffffffffffffc
+    4980:	eb 0b                	jmp    498d <nfsrpc_read+0x54d>
+    4982:	48 8d 48 04          	lea    0x4(%rax),%rcx
+    4986:	48 89 8d 10 ff ff ff 	mov    %rcx,-0xf0(%rbp)
+    498d:	45 89 f7             	mov    %r14d,%r15d
+    4990:	41 bc 48 00 00 00    	mov    $0x48,%r12d
+    4996:	48 85 c0             	test   %rax,%rax
+    4999:	0f 84 f1 fb ff ff    	je     4590 <nfsrpc_read+0x150>
+    499f:	44 8b 30             	mov    (%rax),%r14d
+    49a2:	41 0f ce             	bswap  %r14d
+    49a5:	45 39 ee             	cmp    %r13d,%r14d
+    49a8:	0f 8f e2 fb ff ff    	jg     4590 <nfsrpc_read+0x150>
+    49ae:	48 8d bd e0 fe ff ff 	lea    -0x120(%rbp),%rdi
+    49b5:	48 8b b5 b0 fe ff ff 	mov    -0x150(%rbp),%rsi
+    49bc:	44 89 f2             	mov    %r14d,%edx
+    49bf:	e8 00 00 00 00       	callq  49c4 <nfsrpc_read+0x584>
+			49c0: R_X86_64_PC32	nfsm_mbufuio+0xfffffffffffffffc
+    49c4:	41 89 c4             	mov    %eax,%r12d
+    49c7:	45 85 e4             	test   %r12d,%r12d
+    49ca:	0f 85 c0 fb ff ff    	jne    4590 <nfsrpc_read+0x150>
+    49d0:	48 8b bd e0 fe ff ff 	mov    -0x120(%rbp),%rdi
+    49d7:	e8 00 00 00 00       	callq  49dc <nfsrpc_read+0x59c>
+			49d8: R_X86_64_PC32	m_freem+0xfffffffffffffffc
+    49dc:	48 c7 85 e0 fe ff ff 	movq   $0x0,-0x120(%rbp)
+    49e3:	00 00 00 00 
+    49e7:	4c 8b a5 60 fe ff ff 	mov    -0x1a0(%rbp),%r12
+    49ee:	45 29 f4             	sub    %r14d,%r12d
+    49f1:	f6 85 24 ff ff ff 04 	testb  $0x4,-0xdc(%rbp)
+    49f8:	75 1b                	jne    4a15 <nfsrpc_read+0x5d5>
+    49fa:	45 85 f6             	test   %r14d,%r14d
+    49fd:	8b 9d 5c fe ff ff    	mov    -0x1a4(%rbp),%ebx
+    4a03:	74 2b                	je     4a30 <nfsrpc_read+0x5f0>
+    4a05:	45 89 fe             	mov    %r15d,%r14d
+    4a08:	45 85 f6             	test   %r14d,%r14d
+    4a0b:	75 23                	jne    4a30 <nfsrpc_read+0x5f0>
+    4a0d:	45 85 e4             	test   %r12d,%r12d
+    4a10:	e9 0b fd ff ff       	jmpq   4720 <nfsrpc_read+0x2e0>
+    4a15:	45 39 ee             	cmp    %r13d,%r14d
+    4a18:	8b 9d 5c fe ff ff    	mov    -0x1a4(%rbp),%ebx
+    4a1e:	0f 8d e9 fc ff ff    	jge    470d <nfsrpc_read+0x2cd>
+    4a24:	66 66 66 2e 0f 1f 84 	nopw   %cs:0x0(%rax,%rax,1)
+    4a2b:	00 00 00 00 00 
+    4a30:	45 31 e4             	xor    %r12d,%r12d
+    4a33:	4c 8b b5 98 fe ff ff 	mov    -0x168(%rbp),%r14
+    4a3a:	48 8b bd c8 fe ff ff 	mov    -0x138(%rbp),%rdi
+    4a41:	48 85 ff             	test   %rdi,%rdi
+    4a44:	74 05                	je     4a4b <nfsrpc_read+0x60b>
+    4a46:	e8 00 00 00 00       	callq  4a4b <nfsrpc_read+0x60b>
+			4a47: R_X86_64_PC32	nfscl_lockderef+0xfffffffffffffffc
+    4a4b:	41 81 fc 35 75 00 00 	cmp    $0x7535,%r12d
+    4a52:	7f 2c                	jg     4a80 <nfsrpc_read+0x640>
+    4a54:	41 8d 84 24 e8 d8 ff 	lea    -0x2718(%r12),%eax
+    4a5b:	ff 
+    4a5c:	83 f8 2c             	cmp    $0x2c,%eax
+    4a5f:	4c 8b bd a0 fe ff ff 	mov    -0x160(%rbp),%r15
+    4a66:	77 48                	ja     4ab0 <nfsrpc_read+0x670>
+    4a68:	48 b9 21 80 01 00 00 	mov    $0x100000018021,%rcx
+    4a6f:	10 00 00 
+    4a72:	48 0f a3 c1          	bt     %rax,%rcx
+    4a76:	72 18                	jb     4a90 <nfsrpc_read+0x650>
+    4a78:	eb 36                	jmp    4ab0 <nfsrpc_read+0x670>
+    4a7a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    4a80:	41 81 fc 36 75 00 00 	cmp    $0x7536,%r12d
+    4a87:	4c 8b bd a0 fe ff ff 	mov    -0x160(%rbp),%r15
+    4a8e:	75 20                	jne    4ab0 <nfsrpc_read+0x670>
+    4a90:	bf 64 00 00 00       	mov    $0x64,%edi
+    4a95:	48 c7 c2 00 00 00 00 	mov    $0x0,%rdx
+			4a98: R_X86_64_32S	.rodata.str1.1+0xdb
+    4a9c:	44 89 e6             	mov    %r12d,%esi
+    4a9f:	e8 00 00 00 00       	callq  4aa4 <nfsrpc_read+0x664>
+			4aa0: R_X86_64_PC32	nfs_catnap+0xfffffffffffffffc
+    4aa4:	4c 8b ad b8 fe ff ff 	mov    -0x148(%rbp),%r13
+    4aab:	eb 29                	jmp    4ad6 <nfsrpc_read+0x696>
+    4aad:	0f 1f 00             	nopl   (%rax)
+    4ab0:	41 81 fc 1b 27 00 00 	cmp    $0x271b,%r12d
+    4ab7:	0f 94 c0             	sete   %al
+    4aba:	41 81 fc 29 27 00 00 	cmp    $0x2729,%r12d
+    4ac1:	0f 94 c1             	sete   %cl
+    4ac4:	08 c1                	or     %al,%cl
+    4ac6:	80 f9 01             	cmp    $0x1,%cl
+    4ac9:	0f 84 79 fa ff ff    	je     4548 <nfsrpc_read+0x108>
+    4acf:	4c 8b ad b8 fe ff ff 	mov    -0x148(%rbp),%r13
+    4ad6:	41 8d 5d 01          	lea    0x1(%r13),%ebx
+    4ada:	41 81 fc 35 75 00 00 	cmp    $0x7535,%r12d
+    4ae1:	7f 2d                	jg     4b10 <nfsrpc_read+0x6d0>
+    4ae3:	41 8d 84 24 e8 d8 ff 	lea    -0x2718(%r12),%eax
+    4aea:	ff 
+    4aeb:	83 f8 2c             	cmp    $0x2c,%eax
+    4aee:	77 2d                	ja     4b1d <nfsrpc_read+0x6dd>
+    4af0:	48 b9 21 80 00 00 00 	mov    $0x100000008021,%rcx
+    4af7:	10 00 00 
+    4afa:	48 0f a3 c1          	bt     %rax,%rcx
+    4afe:	73 1d                	jae    4b1d <nfsrpc_read+0x6dd>
+    4b00:	e9 db fa ff ff       	jmpq   45e0 <nfsrpc_read+0x1a0>
+    4b05:	66 66 2e 0f 1f 84 00 	nopw   %cs:0x0(%rax,%rax,1)
+    4b0c:	00 00 00 00 
+    4b10:	41 81 fc 36 75 00 00 	cmp    $0x7536,%r12d
+    4b17:	0f 84 c3 fa ff ff    	je     45e0 <nfsrpc_read+0x1a0>
+    4b1d:	41 81 fc 28 27 00 00 	cmp    $0x2728,%r12d
+    4b24:	0f 84 56 fa ff ff    	je     4580 <nfsrpc_read+0x140>
+    4b2a:	41 81 fc 1b 27 00 00 	cmp    $0x271b,%r12d
+    4b31:	0f 94 c0             	sete   %al
+    4b34:	41 81 fc 29 27 00 00 	cmp    $0x2729,%r12d
+    4b3b:	0f 94 c1             	sete   %cl
+    4b3e:	08 c1                	or     %al,%cl
+    4b40:	80 f9 01             	cmp    $0x1,%cl
+    4b43:	0f 84 d7 f9 ff ff    	je     4520 <nfsrpc_read+0xe0>
+    4b49:	45 85 e4             	test   %r12d,%r12d
+    4b4c:	0f 95 c0             	setne  %al
+    4b4f:	41 83 fd 02          	cmp    $0x2,%r13d
+    4b53:	0f 9f c1             	setg   %cl
+    4b56:	84 c1                	test   %al,%cl
+    4b58:	bb 05 00 00 00       	mov    $0x5,%ebx
+    4b5d:	41 0f 44 dc          	cmove  %r12d,%ebx
+    4b61:	41 f6 46 22 80       	testb  $0x80,0x22(%r14)
+    4b66:	74 0c                	je     4b74 <nfsrpc_read+0x734>
+    4b68:	48 8b bd c0 fe ff ff 	mov    -0x140(%rbp),%rdi
+    4b6f:	e8 00 00 00 00       	callq  4b74 <nfsrpc_read+0x734>
+			4b70: R_X86_64_PC32	crfree+0xfffffffffffffffc
+    4b74:	48 8b 04 25 00 00 00 	mov    0x0,%rax
+    4b7b:	00 
+			4b78: R_X86_64_32S	__stack_chk_guard
+    4b7c:	48 3b 45 d0          	cmp    -0x30(%rbp),%rax
+    4b80:	75 14                	jne    4b96 <nfsrpc_read+0x756>
+    4b82:	89 d8                	mov    %ebx,%eax
+    4b84:	48 81 c4 a8 01 00 00 	add    $0x1a8,%rsp
+    4b8b:	5b                   	pop    %rbx
+    4b8c:	41 5c                	pop    %r12
+    4b8e:	41 5d                	pop    %r13
+    4b90:	41 5e                	pop    %r14
+    4b92:	41 5f                	pop    %r15
+    4b94:	5d                   	pop    %rbp
+    4b95:	c3                   	retq   
+    4b96:	e8 00 00 00 00       	callq  4b9b <nfsrpc_read+0x75b>
+			4b97: R_X86_64_PC32	__stack_chk_fail+0xfffffffffffffffc
+    4b9b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000004ba0 <nfsrpc_write>:
+    4ba0:	55                   	push   %rbp
+    4ba1:	48 89 e5             	mov    %rsp,%rbp
+    4ba4:	41 57                	push   %r15
+    4ba6:	41 56                	push   %r14
+    4ba8:	41 55                	push   %r13
